@@ -174,6 +174,7 @@ server.listen(port, () => {
             console.log('Received complaint:', req.body);
             const complaint = new Complaint({ ...req.body, highlighted: true });
             await complaint.save();
+            console.log('Complaint saved:', complaint);
     
             io.emit('newComplaint', complaint);
     
@@ -195,8 +196,8 @@ server.listen(port, () => {
     
             res.status(200).json(complaints);
         } catch (error) {
-            console.error('Error fetching complaints:', error);
-            res.status(500).send(error);
+            console.error('Error fetching complaints:', error.message, error.stack);
+            res.status(500).send({message: 'Error fetching complaints', error});
         }
     });
     
