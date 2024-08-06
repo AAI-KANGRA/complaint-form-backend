@@ -164,7 +164,7 @@ server.listen(port, () => {
     });
 
     // Connect to MongoDB
-    mongoose.connect('mongodb://localhost:27017/complaint', { useNewUrlParser: true, useUnifiedTopology: true })
+    mongoose.connect('mongodb+srv://vanshikabatra:<password>@complaint-form-cluster.97ebgl6.mongodb.net/?retryWrites=true&w=majority&appName=complaint-form-cluster', { useNewUrlParser: true, useUnifiedTopology: true })
         .then(() => console.log('Connected to MongoDB'))
         .catch((error) => console.error('Error connecting to MongoDB:', error));
 
