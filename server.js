@@ -14,7 +14,10 @@
     const Complaint = require('./model/complaint');
     const User = require('./model/user');  // Import the user model
 
-    const app = express();
+    console.log('MONGO_URI:', process.env.MONGO_URI);
+    console.log('SESSION_SECRET:', process.env.SESSION_SECRET);
+    console.log('PORT:', process.env.PORT);
+const app = express();
     const server = http.createServer(app);
     const io = socketIo(server, {
         cors: {
@@ -22,7 +25,7 @@
             methods: ["GET", "POST"]
         }
     });
-    const port = process.env.PORT || 3000;
+    const port = process.env.PORT || 3001;
 
     // Middleware
     app.use(bodyParser.json());
